@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Mocked Calculated Insights</masterLabel>
+
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage">
+            <property label="Card Icon" name="cardIcon" type="String" default="standard:data_cloud" />
+            <property label="Card Title" name="cardTitle" type="String"
+                default="Calculated Insights" />
+            <property label="Columns" name="columns" type="Integer" min="1" max="12" default="2" />
+            <property label="Layout Variation" name="layoutVariation" type="String"
+                default="stacked"
+                datasource="stacked,horizontal" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

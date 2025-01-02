@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersion>1</activeVersion>
+    <description>Create a compelling introduction for a quote to a customer</description>
+    <developerName>SDO_Sales_Proposal_Introduction_for_a_Quote</developerName>
+    <masterLabel>Proposal Introduction for a Quote</masterLabel>
+    <relatedEntity>Quote</relatedEntity>
+    <relatedField>Quote.Description</relatedField>
+    <templateVersions>
+        <content>Generate two compelling paragraphs to convince a customer to buy the products being proposed. Address the paragraphs to {!$Input:Quote.Contact.Name} and reference the quote {!$Input:Quote.Name}. Include the {!$Organization.Name} in the first paragraph. Describe the benefits of the {!$RelatedList:Quote.QuoteLineItems.Records} for the {!$Input:Quote.Account.Industry}. In the second paragraph mention the {!$Input:Quote.GrandTotal} and {!$Input:Quote.ExpirationDate} and use a sense of urgency. Sign off the introduction with the {!$User.Name}, {!$User.Email} and {!$User.MobilePhone}
+</content>
+        <inputs>
+            <apiName>RelatedEntity</apiName>
+            <definition>SOBJECT://Quote</definition>
+            <referenceName>Input:Quote</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Quote.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>QuoteLineItems</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Quote.QuoteLineItems.Records</referenceName>
+        </templateDataProviders>
+        <versionNumber>1</versionNumber>
+    </templateVersions>
+    <type>einstein_gpt__fieldCompletion</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

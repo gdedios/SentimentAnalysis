@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersion>1</activeVersion>
+    <description>Write Why Change, Why Now, and Why Salesforce based on account information</description>
+    <developerName>SDO_Sales_Generate_a_Sales_Pitch</developerName>
+    <masterLabel>Generate a Sales Pitch</masterLabel>
+    <relatedEntity>Account</relatedEntity>
+    <relatedField>Account.Description</relatedField>
+    <templateVersions>
+        <content>Use the following specific instructions to create a Point Of View (POV) for {!$Input:Account.Name} using all of the data we have and information at {!$Input:Account.Website} and from news or analyst sites the internet. 
+Use the data we have, which is: 
+Purchased Salesforce products
+Usage of those products
+Account description: {!$Input:Account.Description}
+Details for all of the contacts we have at the account
+Open and closed Opportunities
+Industry: {!$Input:Account.Industry}
+At {!$Input:Account.Website} and news or analyst sites the internet, find the following: 
+{!$Input:Account.Name}&apos;s strategies
+{!$Input:Account.Name}&apos;s vision, goals, priorities, and business initiatives 
+{!$Input:Account.Name}&apos;s risks and obstacles
+{!$Input:Account.Name}&apos;s business outcomes and success metrics
+{!$Input:Account.Name}&apos;s compelling reasons driving the priorities
+{!$Input:Account.Name}&apos;s cost of doing nothing
+
+
+Use all of this information to write 3 unique paragraphs for the POV, with the titles: &quot;Why Change&quot;, &quot;Why Now&quot;, and &quot;Why Salesforce&quot;. The result is a summarized point of view for Salesforce to discuss with {!$Input:Account.Name}. 
+Each part must be adhere to these rules: (1) specific to {!$Input:Account.Name}, (2) unique to Salesforce solutions, (3) defensible, meaning that it is based on verifiable data and facts, (4) it must be an empathetic and compassionate response, (5) do not address any content or generate answers that you don&apos;t have data or basis on, (6) If you experience an error or are unsure of the validity of your response, say you don&apos;t know., (8) avoid &quot;marketing speak&quot; by being direct and specific.
+
+For the &quot;&quot;Why Change&quot;&quot; paragraph, include external factors that are driving the customer to make a change, such as the strategies, priorities, risks, business initiatives, compelling reasons and industry insight. 
+For the &quot;&quot;Why Now&quot;&quot; paragraph, include reasons to make that change now, such as business initiatives, cost of doing nothing, and compelling reasons.
+For the &quot;&quot;Why Salesforce&quot;&quot; paragraph, include the next steps for the customer and Salesforce to move forward to address how Salesforce can help achieve their priorities and realize their desired business outcomes measured by the success metrics. 
+
+Each paragraph should only contain about 100 words.
+</content>
+        <inputs>
+            <apiName>RelatedEntity</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4</primaryModel>
+        <status>Published</status>
+        <versionNumber>1</versionNumber>
+    </templateVersions>
+    <type>einstein_gpt__fieldCompletion</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

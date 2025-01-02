@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>GDD_SA_Green</members>
+        <members>GDD_SA_Yellow</members>
+        <members>GDD_SA_Red</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
+        <members>gDD_Sentiment_Analysis</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <version>61.0</version>
+</Package>

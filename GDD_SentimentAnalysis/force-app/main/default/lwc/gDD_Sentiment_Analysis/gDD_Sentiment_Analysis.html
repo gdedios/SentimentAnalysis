@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Sentiment Score" icon-name="standard:dashboard">
+        <div if:true={imageUrl}>
+            <img src={imageUrl} alt="Sentiment Analysis Image" />
+        </div>
+        <div if:false={imageUrl}>
+            <p> No sentiment analysis available. <br> <br> Please use Prompt Builder or Copilot to generate the Sentiment Analysis</p>
+        </div>
+    </lightning-card>
+</template>

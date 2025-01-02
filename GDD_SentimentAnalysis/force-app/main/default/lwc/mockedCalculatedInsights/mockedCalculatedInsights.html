@@ -1,0 +1,26 @@
+<template>
+    <lightning-card icon-name={cardIcon} title={cardTitle}>
+        <div slot="actions">
+            <lightning-button-icon icon-name="utility:settings" alternative-text="Settings"
+                onclick={newRecord}></lightning-button-icon>
+        </div>
+        <div class="slds-var-p-horizontal_medium">
+            <lightning-layout multiple-rows="true">
+                <template for:each={insights} for:item="insight">
+                    <lightning-layout-item size={size} key={insight.Id} padding="horizontal-small"
+                        class="slds-var-m-bottom_small">
+                        <div class={layoutVariationClass} style="border-bottom: none;">
+                            <span class="slds-form-element__label"><lightning-icon if:true={insight.Icon_Name__c}
+                                    class="slds-var-m-right_x-small" icon-name={insight.Icon_Name__c} size="x-small"
+                                    alternative-text={insight.Name}></lightning-icon>{insight.Name}</span>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__static" style="font-weight: bold;">{insight.Value__c}
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+</template>
